@@ -1,0 +1,13 @@
+<div style="margin-top: 5%"></div>
+<p>
+  
+  {{id}}
+</p>
+
+<p >{{ doctor | async | json }}</p>
+
+<p *ngIf="!id" >You Haven't selected any doctor . please select a doctor  </p>
+<button *ngIf="!id" (click)="select()">Select a Doctor</button>
+
+<div style="margin-top: 10%"></div>
+<h2>We can Book slot here</h2>

@@ -1,0 +1,32 @@
+@import "~angular-instantsearch/bundles/instantsearch-theme-algolia.min.css";
+@import "~angular-instantsearch/bundles/instantsearch.min.css";
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+@import "~reflex-grid/css/reflex.min.css";
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    
+}
+
+.img-res {
+    border-radius: 50%;
+      height: auto;
+      width: auto;
+      max-height: 40px;
+      max-width: 40px;
+  
+  }
+
+
+  .ma{
+    margin: 7px 5%;
+}
+
+.blac{
+    color: white;
+    background-color: black;
+}

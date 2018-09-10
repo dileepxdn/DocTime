@@ -1,0 +1,9 @@
+<p>
+  
+  {{id}} 
+</p>
+
+<p >{{ doctor | async | json }}</p>
+
+  <p *ngIf="!id" >You Haven't selected any doctor . please select a doctor   </p>
+<button *ngIf="!id" (click)="select()">Select a Doctor</button>

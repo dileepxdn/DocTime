@@ -1,0 +1,60 @@
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+
+    <span routerLink='/'>Doc Time&nbsp;</span>
+    <p style="font-size: 10px;vertical-align: 2px"> (beta version)</p>
+
+    <div class="spacer"></div>
+
+
+
+    <button *ngIf="user" mat-icon-button [matTooltip]="user.displayName" aria-label="user" [matMenuTriggerFor]="menu">
+      <img [src]="user.photoURL" class="img-res" />
+    </button>
+
+    <button *ngIf="!user" mat-icon-button matTooltip="Login" aria-label="Login" [matMenuTriggerFor]="menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+
+
+    <mat-menu  #menu="matMenu" overlapTrigger="false">
+      <button *ngIf="user" mat-menu-item routerLink='/dashboard'>
+        <mat-icon>home</mat-icon>
+        <span>Dashboard</span>
+      </button>
+
+
+
+      <button *ngIf="user" mat-menu-item routerLink='/search'>
+        <mat-icon>search</mat-icon>
+        <span>Search</span>
+      </button>
+
+      <button *ngIf="user&&user.roles.admin" mat-menu-item routerLink='/admin'>
+        <mat-icon>person_add</mat-icon>
+        <span>Admin</span>
+      </button>
+
+
+
+      <button *ngIf="user" mat-menu-item (click)="logout()">
+        <mat-icon>exit_to_app</mat-icon>
+        <span>Logout</span>
+      </button>
+
+        <button *ngIf="!user" mat-menu-item (click)="login()">
+          <mat-icon>open_in_browser</mat-icon>
+          <span>Login</span>
+        </button>
+
+    </mat-menu>
+
+
+
+
+  </mat-toolbar-row>
+</mat-toolbar>
+
+
+
+<router-outlet></router-outlet>

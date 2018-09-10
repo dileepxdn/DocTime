@@ -1,0 +1,90 @@
+<!-- working thing below -->
+
+<!-- <ais-instantsearch [config]="algolia">
+
+
+<mat-card class="ma">
+   <ais-search-box placeholder="Search"></ais-search-box>   
+</mat-card>
+
+
+<ais-hits>
+  <ng-template class="grid" let-hits="hits">
+    <div  *ngFor="let hit of hits" class="col-xlg-4 col-lg-4 col-md-6 col-sm-6 col-xs-12">
+      
+      
+      
+<mat-card >
+  <mat-card-header >
+    <img mat-card-avatar [src]="hit.image_url" class="img-res" />
+    <mat-card-title>{{hit.name}}</mat-card-title>
+    <mat-card-subtitle>{{hit.email}}</mat-card-subtitle>
+  </mat-card-header>
+  
+  <mat-card-content>
+    
+    <h4>About Doctor:</h4>
+    <p>
+      {{hit.description}}
+    </p>
+    <br>
+    <div>
+      <h4>Area:</h4><p>{{hit.area}}</p>
+    </div>
+    <br>
+    <h4>Specializations:</h4>
+    <mat-chip-list>
+        <mat-chip *ngFor="let spe of hit.specialization" color="accent" selected>
+            {{spe.specialist}}
+        </mat-chip>
+      </mat-chip-list>
+      <br>
+    <h4>Mobile:</h4>
+    <mat-chip-list>
+        <mat-chip *ngFor="let num of hit.phones" color="primary" selected>
+            {{num.number}}
+        </mat-chip>
+      </mat-chip-list>
+
+  </mat-card-content>
+  <mat-card-actions>
+      <hr>
+    <button mat-button color="primary" (click)="view(hit.objectID)">view</button>
+  </mat-card-actions>
+</mat-card>
+
+
+    </div>
+
+  </ng-template>
+
+</ais-hits>
+</ais-instantsearch>
+
+
+
+
+
+
+
+ -->
+
+
+
+ <!-- js testing -->
+
+ <div style="text-align: center">
+  <div id="search-box" >
+
+  </div>
+  <div id="hits">
+
+  </div>
+
+  <div id="pagination">
+    <!-- pagination widget will appear here -->
+  </div>
+ </div>
+
+
+ 

@@ -1,0 +1,21 @@
+.mar{
+ margin-top: 5px;
+}
+
+.center-stuff{
+    display: flex;
+    justify-content: center;
+}
+
+.end-stuff{
+    display: flex;
+    justify-content: center;
+}
+
+
+
+.space-stuff{
+    display: flex;
+    justify-content: space-around;
+}
+

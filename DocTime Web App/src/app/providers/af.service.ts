@@ -1,0 +1,72 @@
+import { Injectable } from '@angular/core';
+import{AngularFireAuth} from 'angularfire2/auth';
+import {MatSnackBar} from '@angular/material';
+import * as firebase from 'firebase/app';
+import 'firebase/auth';
+
+
+
+import { User } from './user';
+
+import { switchMap } from "rxjs/operators";
+import { Observable } from 'rxjs';
+import { of } from 'rxjs';
+import { AngularFirestore, AngularFirestoreDocument } from 'angularfire2/firestore';
+import { Router} from '@angular/router';
+
+
+
+@Injectable({
+  providedIn: 'root'
+})
+export class AfService {
+  user$: Observable<User>;
+
+  constructor( public afAuth:AngularFireAuth, public afs: AngularFirestore,public router:Router,public snackBar: MatSnackBar) {
+    this.user$ = afAuth.authState.pipe(switchMap( user =>{
+      if(user){
+        return this.afs.doc<User>(`users/${user.uid}`).valueChanges();
+      }
+      else{
+        return of(null);
+      }
+    }
+    ));
+   }
+
+
+   loginWithGoogle(){
+     const provider = new firebase.auth.GoogleAuthProvider();
+     
+     this.afAuth.auth.signInWithPopup(provider).then((credential) => {
+      // this.updateUser(credential.user);
+      this.snackBar.open('You are sucessfully Logged in', 'ok', {
+        duration: 3000
+      });
+      this.router.navigate(['/dashboard']);
+     });
+   }
+
+  //  updateUser(user){
+  //   const userRef: AngularFirestoreDocument<any> =this.afs.doc(`users/${user.uid}`);
+  //   const data: User ={
+  //     uid: user.uid,
+  //     email: user.email,
+  //     displayName: user.displayName,
+  //     photoURL:user.photoURL,
+  //     roles:{
+  //       subscriber:true,
+  //       admin:false
+  //     }
+  //   }
+  //   return userRef.set(data,{merge:true})
+  //  }
+
+
+   logout(){
+     this.afAuth.auth.signOut();
+     this.router.navigate(['/login']);
+     location.reload();
+   }
+
+}
