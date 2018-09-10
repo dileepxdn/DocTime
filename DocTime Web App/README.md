@@ -1,6 +1,10 @@
 # DocTime
-
+Demo : https://doc-slot.firebaseapp.com/ <br>
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.1.5.
+
+## install packages
+
+Run `npm install` to install all dependencies.
 
 ## Development server
 
