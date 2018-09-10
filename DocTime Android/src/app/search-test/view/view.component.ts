@@ -9,6 +9,8 @@ import { AuthService } from '../../services/auth.service';
 import { User } from '../../interfaces/user';
 import { NavController } from '@ionic/angular';
 
+// import 'firebase/firestore';
+// import { firestore } from 'firebase';
 
 
 
@@ -19,26 +21,35 @@ import { NavController } from '@ionic/angular';
 })
 export class ViewComponent implements OnInit {
   
-  doctorDoc:AngularFirestoreDocument<Doctor>;
-  doctor: Observable<Doctor>;
+  // doctorDoc:AngularFirestoreDocument<Doctor>;
+  // doctors: Observable<Doctor>;
   id:string;
-  user:User;
+  // doctor$ ;
+   user:User;
+  doctorDoc:AngularFirestoreDocument<Doctor>;
+  doct:Observable<Doctor>;
 
 
-  constructor( private auth:AuthService,private afs: AngularFirestore,private route: ActivatedRoute,private ds:DataService,private nav:NavController) { }
-
-  ngOnInit() {
-  }
-
-   ionViewWillEnter(){
+  constructor( private auth:AuthService,private afs: AngularFirestore,private route: ActivatedRoute,private ds:DataService,private nav:NavController) {
     this.auth.user.subscribe(user => this.user = user);
     this.ds.currentMessage.subscribe( (id) => { 
       this.id=id;
     } );
 
-    this.doctorDoc = this.afs.doc('doctors/'+this.id);
-    this.doctor = this.doctorDoc.valueChanges();
+   }
 
+  ngOnInit() {
+  }
+
+   ionViewWillEnter(){
+    
+    
+    console.log(this.id);
+    // this.doctorDoc = this.afs.doc('doctors/'+this.id);
+    // this.doctor = this.doctorDoc.valueChanges();
+
+    this.doctorDoc = this.afs.doc('doctors/'+this.id);
+    this.doct = this.doctorDoc.valueChanges();
   }
 
 

@@ -3,9 +3,9 @@ export interface Doctor {
     email:string;
     description:string;
     experience:number;
-    speciality:string[];
+    speciality?:string[];
     area:string;
-    education:string[],
-    memberships:string[],
-    awardsandrecognitions:string[],
+    education?:string[],
+    memberships?:string[],
+    phones?:string[]
 }

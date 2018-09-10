@@ -42,5 +42,9 @@ export class SearchTestPage  {
     }, 1500);
   }
 
+  view(id){
+    this.ds.changeMessage(id);
+  }
+
 
 }

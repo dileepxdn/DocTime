@@ -13,7 +13,7 @@ export class DataService {
 
 
 
-  private messageSource = new BehaviorSubject<string>(null);
+  private messageSource = new BehaviorSubject<string>("Loading....");
   currentMessage = this.messageSource.asObservable();
 
 

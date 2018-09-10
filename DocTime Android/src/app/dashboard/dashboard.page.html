@@ -30,6 +30,15 @@
         {{user.displayName}}
       </ion-card-title>
       <ion-card-subtitle>{{user.email}}</ion-card-subtitle>
+      <ion-chip *ngIf="user.roles.subscriber">
+        <ion-label>Subscriber</ion-label>
+      </ion-chip>
+      <ion-chip *ngIf="user.roles.admin">
+        <ion-label>admin</ion-label>
+      </ion-chip>
+    
+      
+
 
     </ion-card>
 
