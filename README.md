@@ -7,3 +7,13 @@ https://github.com/dileepxdn/DocTime/blob/master/DocTime%20Android%20%26%20IOS%2
 
 ## WEB APP Demo :  
 https://doc-slot.firebaseapp.com/
+
+
+
+
+### Credits
+
+DileepNagendra - "Backend"
+Sreekar - "Frontend"
+VivekKorada - "Frontend"
+
