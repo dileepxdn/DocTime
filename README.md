@@ -13,7 +13,7 @@ https://doc-slot.firebaseapp.com/
 
 ### Credits
 
-DileepNagendra - "Backend" <br>
-Sreekar - "Frontend" <br>
-VivekKorada - "Frontend"
+DileepNagendra (https://github.com/dileepxdn) - "Backend" <br>
+Sreekar ( https://github.com/) - "Frontend" <br>
+VivekKorada ( https://github.com/vivekkorada ) - "Frontend"
 
