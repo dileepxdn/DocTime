@@ -1,0 +1,7 @@
+{
+  "name": "doc-time",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}

@@ -1,0 +1,89 @@
+<ion-header>
+  <ion-toolbar color="danger">
+    <ion-title>dashboard</ion-title>
+
+
+    <ion-buttons slot="primary">
+      <ion-button (click)="logout()">
+        <ion-icon slot="icon-only" name="exit"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+
+  </ion-toolbar>
+
+
+</ion-header>
+
+<ion-content padding>
+
+
+
+  <!-- user when login -->
+  <div *ngIf="user" style="text-align: center">
+
+    <ion-card>
+
+
+      <img [src]="user.photoURL" alt="">
+      <ion-card-title>
+        {{user.displayName}}
+      </ion-card-title>
+      <ion-card-subtitle>{{user.email}}</ion-card-subtitle>
+
+    </ion-card>
+
+
+    <!-- <ion-img width="80" height="80" [src]="user.photoURL"></ion-img> -->
+    <!-- <img [src]="user.photoURL" class="card"> -->
+    <!-- <ion-grid>
+      <ion-row>
+
+        <ion-col col-2 *ngIf="user.roles.subscriber">
+          <div>
+            <ion-chip>
+              <ion-label>subscriber</ion-label>
+            </ion-chip>
+          </div>
+        </ion-col>
+
+        <ion-col col-3 *ngIf="user.roles.admin">
+          <div>
+            <ion-chip>
+              <ion-label>admin</ion-label>
+            </ion-chip>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid> -->
+
+
+
+
+
+    <!-- {{user | json}} -->
+
+    <br>
+
+    <!-- Subscriber zone -->
+    <div *ngIf="user.roles.subscriber">
+      <ion-button shape="round" color="primary" fill="outline" (click)="route('/search')">Search Doctors</ion-button>
+      <br>
+      <ion-button shape="round" color="primary" fill="outline" (click)="route('/app')">View Appointments</ion-button>
+      <br>
+
+    </div>
+
+    <!-- Admin Zone -->
+    <div *ngIf="user.roles.admin">
+
+      <ion-button shape="round" color="danger" fill="outline" (click)="route('/admin')">Manage Doctors</ion-button>
+      <br>
+      <ion-button shape="round" color="danger" fill="outline" (click)="route('/admin')">Manage users</ion-button>
+
+
+    </div>
+
+
+  </div>
+</ion-content>

@@ -1,0 +1,126 @@
+<ion-header>
+    <ion-toolbar color="primary">
+      <ion-buttons slot="start">
+        <ion-back-button></ion-back-button>
+      </ion-buttons>
+      <ion-title>Add Doctor</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+<ion-content padding>
+
+
+  <form [formGroup]="myForm">
+
+      
+      
+      <ion-list>
+
+          <ion-item>
+            <ion-label position="floating">Name</ion-label>
+            <ion-input type="" formControlName="name"></ion-input>
+          </ion-item>
+      
+          <ion-item>
+            <ion-label position="floating">Email</ion-label>
+            <ion-input formControlName="email" ></ion-input>
+          </ion-item>
+      
+          <ion-item>
+            <ion-label position="floating">Description</ion-label>
+            <ion-input formControlName="description"></ion-input>
+          </ion-item>
+      
+          <ion-item>
+            <ion-label  position="floating">Area</ion-label>
+            <ion-input formControlName="area"></ion-input>
+          </ion-item>
+      
+          <ion-item>
+            <ion-label position="floating">Experience</ion-label>
+            <ion-input type="number" formControlName="experience"></ion-input>
+          </ion-item>
+      
+
+          <ion-item>
+              <ion-label position="floating">Image Url</ion-label>
+              <ion-input  formControlName="image_url"></ion-input>
+            </ion-item>
+        </ion-list>
+      
+      <div formArrayName="phones">
+          <ion-card *ngFor="let phone of phoneForms.controls; let i=index" [formGroupName]="i">
+              <ion-card-content>
+                <ion-item>
+                  <ion-label position="floating">Phone</ion-label>
+                  <ion-input  formControlName="number"></ion-input>
+                </ion-item>
+                <ion-button style="padding-top: 40px" (click)="deletePhone()" color="danger">Delete</ion-button>
+              </ion-card-content>
+             </ion-card>
+      </div>
+      <ion-button shape="round" style="padding-top: 10px ;padding-left: 100px"  (click)="addPhone()" color="dark">Add Phone number</ion-button>
+      
+
+      <div formArrayName="specialization">
+          <ion-card *ngFor="let specialization of specializationForms.controls; let i=index" [formGroupName]="i">
+              <ion-card-content>
+                <ion-item>
+                  <ion-label position="floating">Specialization</ion-label>
+                  <ion-input  formControlName="specialist"></ion-input>
+                </ion-item>
+                <ion-button style="padding-top: 40px" (click)="deleteSpecialization()" color="danger">Delete</ion-button>
+              </ion-card-content>
+             </ion-card>
+      </div>
+      <ion-button shape="round" style="padding-top: 10px ;padding-left: 100px"  (click)="addSpecialization()" color="dark">Add Specialization</ion-button>
+      
+
+
+
+      
+
+
+      <div formArrayName="degrees">
+          <ion-card *ngFor="let degree of degreeForms.controls; let i=index" [formGroupName]="i">
+              <ion-card-content>
+                <ion-item>
+                  <ion-label position="floating">Education</ion-label>
+                  <ion-input  formControlName="degree"></ion-input>
+                </ion-item>
+                <ion-button style="padding-top: 40px" (click)="deleteDegree()" color="danger">Delete</ion-button>
+              </ion-card-content>
+             </ion-card>
+      </div>
+      <ion-button shape="round" style="padding-top: 10px ;padding-left: 100px"  (click)="addDegree()" color="dark">Add Education</ion-button>
+      
+
+
+
+      <div formArrayName="memberships">
+          <ion-card *ngFor="let membership of  membershipForms.controls; let i=index" [formGroupName]="i">
+              <ion-card-content>
+                <ion-item>
+                  <ion-label position="floating">Membership</ion-label>
+                  <ion-input  formControlName="membership"></ion-input>
+                </ion-item>
+                <ion-button style="padding-top: 40px" (click)="deleteMembership()" color="danger">Delete</ion-button>
+              </ion-card-content>
+             </ion-card>
+      </div>
+      <ion-button shape="round" style="padding-top: 10px ;padding-left: 100px"  (click)="addMembership()" color="dark">Add Membership</ion-button>
+      
+
+
+
+
+
+      
+         <ion-button  color="success" [disabled]="myForm.invalid" (click)="submit()" style="padding-top: 50px;padding-left: 250px">Add Doctor</ion-button>
+         <ion-button  color="success" type="reset" style="padding-top: 50px;padding-left: 250px">reset</ion-button>
+
+    
+
+    </form>
+
+</ion-content>

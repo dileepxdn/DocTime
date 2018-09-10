@@ -1,0 +1,149 @@
+<ion-header>
+  <ion-toolbar  color="danger">
+      <ion-buttons slot="start">
+          <ion-back-button></ion-back-button>
+        </ion-buttons>
+    <ion-title>Search Doctor</ion-title>
+    <!-- <ion-buttons (click)="toggleFilter()" slot="primary">
+        <ion-button >
+          <ion-icon slot="icon-only" name="more"></ion-icon>
+        </ion-button>
+      </ion-buttons> -->
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+
+    <ion-refresher (ionRefresh)="doRefresh($event);">
+    <ion-refresher-content 
+      
+      pullingIcon="md-refresh"
+      refreshingSpinner="circles">
+    </ion-refresher-content>
+ </ion-refresher>
+
+  
+
+  <ais-instantsearch *ngIf="!loading" [config]="{
+      apiKey: 'ee42930d8fba609e64b4ed2819006175',
+      appId: 'O9UAPFMUCH',
+      indexName: 'doctors',
+      routing: true
+    }">
+
+    <div>
+
+          <ais-refinement-list attribute="area" searchable="true" searchPlaceholder="Select Area" limit="3"   >
+          </ais-refinement-list> <p style="margin-top: -2px">+More....</p>
+          <br>
+          <ais-refinement-list attribute="specialization.specialist" searchable="true" searchPlaceholder="Select Specialist" limit="3">
+          </ais-refinement-list><p style="margin-top: -2px">+More....</p>
+          <br>
+          <ais-current-refinements [clearsQuery]="true">
+          </ais-current-refinements>
+         
+    </div>
+
+    <!-- <ais-search-box placeholder="Search" style="padding-top: 20px" ></ais-search-box> -->
+<br>
+
+    <ais-stats>
+      <ng-template let-state="state">
+        {{state.nbHits}} results found in {{state.processingTimeMS}}ms.
+      </ng-template>
+    </ais-stats>
+
+<br>
+    <ais-hits-per-page [items]="[
+    { value: 10, label: '10 per page',default:true },
+    { value: 20, label: '20 per page' },
+    { value: 30, label: '30 per page' }
+  ]">
+    </ais-hits-per-page>
+<br>
+    <ais-hits>
+
+
+      <ng-template let-hits="hits">
+
+
+        <p *ngIf="hits.length === 0">
+          No results were found .
+        </p>
+        <div *ngFor="let hit of hits">
+          <!-- Hit {{hit.objectID}}: {{hit.name}}
+        Name :  {{hit.name}}
+        ID : {{hit.objectID}}
+        <button (click)="view(hit.objectID)">view</button> -->
+
+
+
+
+          <ion-card>
+            <img [src]="hit.image_url" />
+            <ion-card-content>
+              <ion-card-title>
+                {{hit.name}}
+              </ion-card-title>
+              <p style="padding-top: 10px">
+                {{hit.email}}
+              </p>
+              <p>
+                <b>Phone:</b> 9874563210
+              </p>
+              <p>
+                <b>About:</b>{{hit.description}}
+              </p>
+
+              <b>Specializations:</b>
+              <br>
+              <div style="margin-bottom: 5px"></div>
+
+
+              <ion-chip *ngFor="let spe of hit.specialization">
+                <ion-label>{{spe.specialist}}</ion-label>
+              </ion-chip>
+
+
+              <br>
+              <ion-button style="padding-top: 10px" color="dark"  [routerLink]="['/search',hit.objectID]"  >View</ion-button>
+
+            </ion-card-content>
+          </ion-card>
+
+        </div>
+
+      </ng-template>
+
+
+
+    </ais-hits>
+
+
+
+
+  
+      <div style="text-align: center">
+        <ais-pagination></ais-pagination>
+
+      </div>
+    
+
+  </ais-instantsearch>
+
+
+ 
+
+
+</ion-content>
+
+
+<div *ngIf="user">
+   
+    <ion-fab *ngIf="user.roles.admin"  vertical="bottom" horizontal="end" slot="fixed">
+        <ion-fab-button routerLink='/add'>
+          <ion-icon name="add" ></ion-icon>
+        </ion-fab-button>
+      </ion-fab>
+ </div>
