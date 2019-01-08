@@ -1,6 +1,6 @@
 # DocTime
 
-Android IOS and Web App for booking doctor time slot .
+Android IOS and Web App for Doctor Database for viewing retriving doctor details according to area,specializiation etc.
 
 ## Android APP APK :
 https://github.com/dileepxdn/DocTime/blob/master/DocTime%20Android%20%26%20IOS%20APP/DocTime%20beta.apk 
